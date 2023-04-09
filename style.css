@@ -1,0 +1,19 @@
+body {
+  background-color: #eef9bf;
+}
+
+h1 {
+  color: #75b79e;
+  font-family: Roboto;
+  font-size: 56px;
+  font-weight: 700;
+  display: flex;
+  margin-top: 70px;
+  justify-content: space-around;
+}
+
+@media (max-width: 615px) {
+  .cards {
+    display: flex;
+  }
+}
