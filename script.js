@@ -25,11 +25,7 @@ let gameGifs = [
   `src="img/unicornparrot.gif"`,
 ];
 
-while (
-  numberOfCards < 4 ||
-  numberOfCards > 14 ||
-  numberOfCards % 2 !== 0
-) {
+while (numberOfCards < 4 || numberOfCards > 14 || numberOfCards % 2 !== 0) {
   numberOfCards = prompt("Com quantas Cards você quer jogar?");
 }
 

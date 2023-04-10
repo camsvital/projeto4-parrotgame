@@ -12,13 +12,12 @@ h1 {
   margin-bottom: 60px;
 }
 
-.conteiner{
+.conteiner {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
 }
-
 
 .cards {
   width: 117px;
@@ -65,7 +64,7 @@ h1 {
 }
 
 @media (max-width: 615px) {
-  h1{
+  h1 {
     font-size: 30px;
   }
 }
