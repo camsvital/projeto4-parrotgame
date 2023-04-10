@@ -1,43 +1,85 @@
-let firstCard = null;
-let playCount = 0;
-let pars = 0;
-let cardSequence = [];
+let certo = 0;
+let carta1, carta2;
+let click = 0;
+let cartaSelecionada;
+sequenciaCartas = [];
+let quantidadeDeCartas = Number(prompt("Com quantas cartas você quer jogar?"));
+const conteudo = document.querySelector(".conteudo");
+let gifJogo = [
+  `<img gif-papagaio src="bobrossparrot.gif">`,
+  `<img gif-papagaio src="bobrossparrot.gif">`,
+  `<img gif-papagaio src="explodyparrot.gif">`,
+  `<img gif-papagaio src="explodyparrot.gif">`,
+  `<img gif-papagaio src="fiestaparrot.gif">`,
+  `<img gif-papagaio src="fiestaparrot.gif">`,
+  `<img gif-papagaio src="metalparrot.gif">`,
+  `<img gif-papagaio src="metalparrot.gif">`,
+  `<img gif-papagaio src="revertitparrot.gif">`,
+  `<img gif-papagaio src="revertitparrot.gif">`,
+  `<img gif-papagaio src="tripletsparrot.gif" >`,
+  `<img gif-papagaio src="tripletsparrot.gif">`,
+  `<img gif-papagaio src="unicornparrot.gif">`,
+  `<img gif-papagaio src="unicornparrot.gif">`
+];
 
-function game() {
-  qtdCards = prompt("Com quantas cartas você quer jogar?");
-
-  if ((qtdCards < 4, qtdCards > 14, qtdCards % 2 !== 0)) {
-    prompt("Com quantas cartas você quer jogar?");
-  } else {
-    for (let i = 1; i < qtdCards / 2; i++) {
-      cardSequence[2 * (i - 1)] = i;
-      cardSequence[2 * (i - 1) + 1] = i;
-    }
-
-    const content = document.querySelector(".content");
-    conteudo.innerHTML = "";
-    for (let i = 1; i < qtdCards; i++) {
-      let text = "";
-
-      switch (cardSequence[i - 1]) {
-        case 1:
-          texto = `<div class="grid"/>
-            <div>
-              <img src="img/back.png" />
-            </div>`;
-
-          break;
-      }
-    }
-  }
+while (
+  quantidadeDeCartas < 4 ||
+  quantidadeDeCartas > 14 ||
+  quantidadeDeCartas % 2 !== 0
+) {
+  quantidadeDeCartas = prompt("Com quantas cartas você quer jogar?");
 }
 
-game();
+for (let i = 0; i < quantidadeDeCartas; i++) {
+  let grid = `
+   <div class="cartas" onclick='virarCartas(this)'> 
+       <div class="frente">
+           <img class="imagem-papagaio" src="back.png">
+       </div>
+       <div class="verso escondido">
+           ${gifJogo[i]}
+       </div>
+   </div>`;
 
-cardSequence.sort(comparador); // Após esta linha, a minhaArray estará embaralhada
+  sequenciaCartas.push(grid);
+}
 
-function distribuirCard() {}
+sequenciaCartas.sort(comparador);
 
 function comparador() {
   return Math.random() - 0.5;
+}
+
+conteudo.innerHTML = sequenciaCartas.join("");
+
+function virarCartas(elemento) {
+  elemento.classList.add("virar");
+  click++;
+
+  if (cartaSelecionada !== undefined) {
+    cartasIguais(cartaSelecionada, elemento);
+  } else {
+    cartaSelecionada = elemento;
+  }
+}
+
+function cartasIguais(carta1, carta2) {
+  cartaSelecionada = undefined;
+
+  if (carta1.innerHTML === carta2.innerHTML) {
+    carta1.removeAttribute("onclick");
+    carta1.removeAttribute("onclick");
+    certo += 2;
+
+    if (quantidadeDeCartas === certo) {
+      setTimeout(function () {
+        alert(`Parabéns. Você ganhou! `);
+      }, 500);
+    }
+  } else {
+    setTimeout(function () {
+      carta1.classList.remove("virar");
+      carta2.classList.remove("virar");
+    }, 1000);
+  }
 }
