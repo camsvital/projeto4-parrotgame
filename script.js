@@ -6,20 +6,20 @@ sequenciaCartas = [];
 let quantidadeDeCartas = Number(prompt("Com quantas cartas você quer jogar?"));
 const conteudo = document.querySelector(".conteudo");
 let gifJogo = [
-  `<img data-test="face-up-image" src="bobrossparrot.gif">`,
-  `<img data-test="face-up-image" src="bobrossparrot.gif">`,
-  `<img data-test="face-up-image" src="explodyparrot.gif">`,
-  `<img data-test="face-up-image" src="explodyparrot.gif">`,
-  `<img data-test="face-up-image" src="fiestaparrot.gif">`,
-  `<img data-test="face-up-image" src="fiestaparrot.gif">`,
-  `<img data-test="face-up-image" src="metalparrot.gif">`,
-  `<img data-test="face-up-image" src="metalparrot.gif">`,
-  `<img data-test="face-up-image" src="revertitparrot.gif">`,
-  `<img data-test="face-up-image" src="revertitparrot.gif">`,
-  `<img data-test="face-up-image" src="tripletsparrot.gif" >`,
-  `<img data-test="face-up-image" src="tripletsparrot.gif">`,
-  `<img data-test="face-up-image" src="unicornparrot.gif">`,
-  `<img data-test="face-up-image" src="unicornparrot.gif">`,
+  `src="bobrossparrot.gif"`,
+  `src="bobrossparrot.gif"`,
+  `src="explodyparrot.gif"`,
+  `src="explodyparrot.gif"`,
+  `src="fiestaparrot.gif"`,
+  `src="fiestaparrot.gif"`,
+  `src="metalparrot.gif"`,
+  `src="metalparrot.gif"`,
+  `src="revertitparrot.gif"`,
+  `src="revertitparrot.gif"`,
+  `src="tripletsparrot.gif" `,
+  `src="tripletsparrot.gif"`,
+  `src="unicornparrot.gif"`,
+  `src="unicornparrot.gif"`,
 ];
 
 while (
@@ -32,12 +32,12 @@ while (
 
 for (let i = 0; i < quantidadeDeCartas; i++) {
   let grid = `
-   <div data-test="card class="cartas" onclick='virarCartas(this)'> 
+   <div class="cartas" onclick='virarCartas(this)'> 
        <div class="frente">
            <img data-test="face-down-image" class="imagem-papagaio" src="back.png">
        </div>
        <div class="verso escondido">
-           ${gifJogo[i]}
+       <img data-test="face-up-image" ${gifJogo[i]}>
        </div>
    </div>`;
 
@@ -73,7 +73,7 @@ function cartasIguais(carta1, carta2) {
 
     if (quantidadeDeCartas === certo) {
       setTimeout(function () {
-        alert(`Parabéns. Você ganhou! `);
+        alert(`Parabéns. Você ganhou em ${click} jogadas! `);
       }, 500);
     }
   } else {
