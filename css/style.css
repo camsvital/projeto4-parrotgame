@@ -12,7 +12,7 @@ h1 {
   margin-bottom: 60px;
 }
 
-.conteudo{
+.conteiner{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -20,7 +20,7 @@ h1 {
 }
 
 
-.cartas {
+.cards {
   width: 117px;
   height: 146px;
   background-color: #a7e9af;
@@ -35,23 +35,23 @@ h1 {
   margin: 30px 30px 30px 30px;
 }
 
-.virar.cartas {
+.turn.cards {
   transform: rotateY(180deg);
 }
 
-.virar.cartas .frente {
+.turn.cards .front {
   opacity: 0;
 }
 
-.virar.cartas .verso {
+.turn.cards .back {
   opacity: 1;
 }
 
-.escondido {
+.hidden {
   opacity: 0;
 }
 
-.frente > img {
+.front > img {
   width: 100px;
   height: 100px;
   position: absolute;
@@ -59,7 +59,7 @@ h1 {
   left: 5px;
 }
 
-.verso > img {
+.back > img {
   width: 80px;
   height: 80px;
 }

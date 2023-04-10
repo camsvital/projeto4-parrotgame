@@ -1,85 +1,88 @@
-let certo = 0;
-let carta1, carta2;
+let right = 0;
+
 let click = 0;
-let cartaSelecionada;
-sequenciaCartas = [];
-let quantidadeDeCartas = Number(prompt("Com quantas cartas você quer jogar?"));
-const conteudo = document.querySelector(".conteudo");
-let gifJogo = [
-  `src="bobrossparrot.gif"`,
-  `src="bobrossparrot.gif"`,
-  `src="explodyparrot.gif"`,
-  `src="explodyparrot.gif"`,
-  `src="fiestaparrot.gif"`,
-  `src="fiestaparrot.gif"`,
-  `src="metalparrot.gif"`,
-  `src="metalparrot.gif"`,
-  `src="revertitparrot.gif"`,
-  `src="revertitparrot.gif"`,
-  `src="tripletsparrot.gif" `,
-  `src="tripletsparrot.gif"`,
-  `src="unicornparrot.gif"`,
-  `src="unicornparrot.gif"`,
+let selectedCard;
+
+let lastCard = null;
+let firstCard, secondCard;
+let numberOfCards = Number(prompt("Com quantas cartas você quer jogar?"));
+const conteiner = document.querySelector(".conteiner");
+cardSequence = [];
+let gameGifs = [
+  `src="img/bobrossparrot.gif"`,
+  `src="img/bobrossparrot.gif"`,
+  `src="img/explodyparrot.gif"`,
+  `src="img/explodyparrot.gif"`,
+  `src="img/fiestaparrot.gif"`,
+  `src="img/fiestaparrot.gif"`,
+  `src="img/metalparrot.gif"`,
+  `src="img/metalparrot.gif"`,
+  `src="img/revertitparrot.gif"`,
+  `src="img/revertitparrot.gif"`,
+  `src="img/tripletsparrot.gif" `,
+  `src="img/tripletsparrot.gif"`,
+  `src="img/unicornparrot.gif"`,
+  `src="img/unicornparrot.gif"`,
 ];
 
 while (
-  quantidadeDeCartas < 4 ||
-  quantidadeDeCartas > 14 ||
-  quantidadeDeCartas % 2 !== 0
+  numberOfCards < 4 ||
+  numberOfCards > 14 ||
+  numberOfCards % 2 !== 0
 ) {
-  quantidadeDeCartas = prompt("Com quantas cartas você quer jogar?");
+  numberOfCards = prompt("Com quantas Cards você quer jogar?");
 }
 
-for (let i = 0; i < quantidadeDeCartas; i++) {
+for (let i = 0; i < numberOfCards; i++) {
   let grid = `
-   <div data-test="card" class="cartas" onclick='virarCartas(this)'> 
-       <div class="frente">
-           <img data-test="face-down-image" class="imagem-papagaio" src="back.png">
+   <div data-test="card" class="cards" onclick='turnCards(this)'> 
+       <div class="front">
+           <img data-test="face-down-image" class="parrot-img" src="img/back.png">
        </div>
-       <div class="verso escondido">
-       <img data-test="face-up-image" ${gifJogo[i]}>
+       <div class="back hidden">
+       <img data-test="face-up-image" ${gameGifs[i]}>
        </div>
    </div>`;
 
-  sequenciaCartas.push(grid);
+  cardSequence.push(grid);
 }
 
-sequenciaCartas.sort(comparador);
+cardSequence.sort(comparator);
 
-function comparador() {
+function comparator() {
   return Math.random() - 0.5;
 }
 
-conteudo.innerHTML = sequenciaCartas.join("");
+conteiner.innerHTML = cardSequence.join("");
 
-function virarCartas(elemento) {
-  elemento.classList.add("virar");
+function turnCards(element) {
+  element.classList.add("turn");
   click++;
 
-  if (cartaSelecionada !== undefined) {
-    cartasIguais(cartaSelecionada, elemento);
+  if (selectedCard !== undefined) {
+    equalCards(selectedCard, element);
   } else {
-    cartaSelecionada = elemento;
+    selectedCard = element;
   }
 }
 
-function cartasIguais(carta1, carta2) {
-  cartaSelecionada = undefined;
+function equalCards(firstCard, secondCard) {
+  selectedCard = undefined;
 
-  if (carta1.innerHTML === carta2.innerHTML) {
-    carta1.removeAttribute("onclick");
-    carta1.removeAttribute("onclick");
-    certo += 2;
+  if (firstCard.innerHTML === secondCard.innerHTML) {
+    firstCard.removeAttribute("onclick");
+    firstCard.removeAttribute("onclick");
+    right += 2;
 
-    if (quantidadeDeCartas === certo) {
+    if (numberOfCards === right) {
       setTimeout(function () {
-        alert(`Parabéns. Você ganhou em ${click} jogadas! `);
+        alert(`Parabéns. Você ganhou em ${click} jogadas!`);
       }, 500);
     }
   } else {
     setTimeout(function () {
-      carta1.classList.remove("virar");
-      carta2.classList.remove("virar");
+      firstCard.classList.remove("turn");
+      secondCard.classList.remove("turn");
     }, 1000);
   }
 }
