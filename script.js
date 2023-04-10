@@ -6,20 +6,20 @@ sequenciaCartas = [];
 let quantidadeDeCartas = Number(prompt("Com quantas cartas você quer jogar?"));
 const conteudo = document.querySelector(".conteudo");
 let gifJogo = [
-  `<img gif-papagaio src="bobrossparrot.gif">`,
-  `<img gif-papagaio src="bobrossparrot.gif">`,
-  `<img gif-papagaio src="explodyparrot.gif">`,
-  `<img gif-papagaio src="explodyparrot.gif">`,
-  `<img gif-papagaio src="fiestaparrot.gif">`,
-  `<img gif-papagaio src="fiestaparrot.gif">`,
-  `<img gif-papagaio src="metalparrot.gif">`,
-  `<img gif-papagaio src="metalparrot.gif">`,
-  `<img gif-papagaio src="revertitparrot.gif">`,
-  `<img gif-papagaio src="revertitparrot.gif">`,
-  `<img gif-papagaio src="tripletsparrot.gif" >`,
-  `<img gif-papagaio src="tripletsparrot.gif">`,
-  `<img gif-papagaio src="unicornparrot.gif">`,
-  `<img gif-papagaio src="unicornparrot.gif">`
+  `<img data-test="face-up-image" src="bobrossparrot.gif">`,
+  `<img data-test="face-up-image" src="bobrossparrot.gif">`,
+  `<img data-test="face-up-image" src="explodyparrot.gif">`,
+  `<img data-test="face-up-image" src="explodyparrot.gif">`,
+  `<img data-test="face-up-image" src="fiestaparrot.gif">`,
+  `<img data-test="face-up-image" src="fiestaparrot.gif">`,
+  `<img data-test="face-up-image" src="metalparrot.gif">`,
+  `<img data-test="face-up-image" src="metalparrot.gif">`,
+  `<img data-test="face-up-image" src="revertitparrot.gif">`,
+  `<img data-test="face-up-image" src="revertitparrot.gif">`,
+  `<img data-test="face-up-image" src="tripletsparrot.gif" >`,
+  `<img data-test="face-up-image" src="tripletsparrot.gif">`,
+  `<img data-test="face-up-image" src="unicornparrot.gif">`,
+  `<img data-test="face-up-image" src="unicornparrot.gif">`,
 ];
 
 while (
@@ -32,9 +32,9 @@ while (
 
 for (let i = 0; i < quantidadeDeCartas; i++) {
   let grid = `
-   <div class="cartas" onclick='virarCartas(this)'> 
+   <div data-test="card class="cartas" onclick='virarCartas(this)'> 
        <div class="frente">
-           <img class="imagem-papagaio" src="back.png">
+           <img data-test="face-down-image" class="imagem-papagaio" src="back.png">
        </div>
        <div class="verso escondido">
            ${gifJogo[i]}
