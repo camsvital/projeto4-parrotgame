@@ -32,7 +32,7 @@ while (
 
 for (let i = 0; i < quantidadeDeCartas; i++) {
   let grid = `
-   <div class="cartas" onclick='virarCartas(this)'> 
+   <div data-test="card" class="cartas" onclick='virarCartas(this)'> 
        <div class="frente">
            <img data-test="face-down-image" class="imagem-papagaio" src="back.png">
        </div>
